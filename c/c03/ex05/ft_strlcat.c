@@ -6,61 +6,54 @@
 /*   By: lpaula-n <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/26 16:32:04 by lpaula-n          #+#    #+#             */
-/*   Updated: 2024/07/26 19:22:21 by lpaula-n         ###   ########.fr       */
+/*   Updated: 2024/07/29 20:03:23 by lpaula-n         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int ft_strlcat(char *dest, char *src, unsigned int size)
+unsigned int	ft_strlen(char *src)
 {
-	unsigned int	comprimento_dest;
-	unsigned int	posicao_src;
-	unsigned int	total_length;
+	unsigned int	i;
 
-	comprimento_dest = 0;
-	//determinando o comprimento da string dest
-	while (dest[comprimento_dest])
-		comprimento_dest++;
-
-	total_length = 0;
-	//determinando o comprimento da string src
-	while (src[total_length])
-		total_length++;
-
-
-	//ajustar total_length para refletir o comprimento total da string concatenada
-  if (size <= comprimento_dest)
-    total_length += size;
-  else
-    total_length += comprimento_dest;
-
-  posicao_src = 0;
-      // Copiar caracteres de src para o final de dest
-    // enquanto houver caracteres em src e houver espaço em dest para a cópia
-    // sem ultrapassar o limite de size - 1, garantindo espaço para o byte nulo
-  while (src[posicao_src] && (comprimento_dest + posicao_src) < (size - 1))
-  {
-    dest[comprimento_dest + posicao_src] = src[posicao_src];
-    posicao_src++;
-  }
-   // Garantir que a string dest seja terminada corretamente
-  if(comprimento_dest < size)
-    dest[comprimento_dest + posicao_src] = '\0';
-  return (total_length);
+	i = 0;
+	while (src[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
-int main()
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-    char dest[50] = "Hello, ";
-    char src[] = "world!";
-    unsigned int size = 50;
-    unsigned int result;
+	unsigned int	dest_len;
+	unsigned int	src_len;
+	unsigned int	total_length;
+	unsigned int	i;
 
-    result = ft_strlcat(dest, src, size);
+	i = 0;
+	dest_len = ft_strlen(dest);
+	src_len = ft_strlen(src);
+	total_length = dest_len + src_len;
+	if (size <= dest_len)
+		return (src_len + size);
+	while (src[i] && (dest_len + i) < (size - 1))
+	{
+		dest[dest_len + i] = src[i];
+		i++;
+	}
+	if (dest_len < size)
+		dest[dest_len + i] = '\0';
+	return (total_length);
+}
+/*
+int main() {
+    char dest[20] = "Hey,dfg";
+    char src[] = "wofff!";
+    unsigned int size = 10;
 
-    // Exibir resultado
-    printf("\nDepois:\n");
-    printf("dest: '%s'\n", dest);
-    printf("Comprimento total da string concatenada: %u\n", result);
+    unsigned int result = ft_strlcat(dest, src, size);
+ 
+    printf("%u\n", result);
 
     return 0;
 }
+*/
