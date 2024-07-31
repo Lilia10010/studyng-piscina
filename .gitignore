@@ -1,0 +1,56 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+
+# Build and output directories
+dist/
+build/
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Yarn v1
+.yarn/
+.yarn-integrity
+
+# Yarn v2
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Visual Studio Code
+.vscode/
+.history/
+
+# Mac system files
+.DS_Store
+
+# Miscellaneous
+*.sublime-project
+*.sublime-workspace
+
+# IDEs and editors
+.idea/
+*.iml
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-gulp.cache
